@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Lauren is not Awesome!</h1>
+        <h1>Lauren wishes Awesome!</h1>
     </body>
 </html>
