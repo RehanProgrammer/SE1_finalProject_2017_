@@ -16,7 +16,7 @@ public class order {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection myConn = DriverManager.getConnection
-					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
+					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","DdaavviidMYSQL1d");
 			PreparedStatement ps=myConn.prepareStatement(  
 					"select * from inventory where ItemId='" + scannerCode+"'" );
 			ResultSet rs = ps.executeQuery();
@@ -57,7 +57,7 @@ public class order {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection myConn = DriverManager.getConnection
-					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
+					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","DdaavviidMYSQL1d");
 			String sql = "Insert into Cart(itemName,itemPrice,itemId) VALUES (?,?,?)";
 			PreparedStatement ps ;
 			ps = myConn.prepareStatement(sql);
@@ -78,7 +78,7 @@ public class order {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection myConn = DriverManager.getConnection
-					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
+					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","DdaavviidMYSQL1d");
 			String update = "update inventory set quantity = quantity-1 where ItemId =?";
 			PreparedStatement ps;
 			 ps = myConn.prepareStatement(update);

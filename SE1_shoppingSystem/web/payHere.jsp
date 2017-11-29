@@ -12,17 +12,17 @@
 	<%
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection myConn = DriverManager.getConnection
-			("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
-	String delete = "DELETE FROM storeOrders";
+			("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","DdaavviidMYSQL1d");
+	String delete = "DELETE FROM Cart";
 	PreparedStatement ps=myConn.prepareStatement(delete);
 	ps.executeUpdate();
 	%>
 	<h4>Choose payment options</h4>
-	<form action="CashPayment" method="post">
-       <input	type="submit" value="submit">
+	<form action="CashPayment.jsp" method="post">
+       Cash <input	type="submit" value="submit">
         </form>
-        <form action="CardPayment" method="post">
-       <input	type="submit" value="submit">
+        <form action="CardPayment.jsp" method="post">
+       Card <input	type="submit" value="submit">
         </form>
 </body>
 </html>

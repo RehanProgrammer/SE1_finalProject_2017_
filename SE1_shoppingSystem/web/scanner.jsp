@@ -20,7 +20,7 @@
 	try{
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection myConn = DriverManager.getConnection
-			("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
+			("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","DdaavviidMYSQL1d");
 	PreparedStatement ps=myConn.prepareStatement(  
 			"select * from Cart");//check if the cart table is not null
 	ResultSet rs = ps.executeQuery();

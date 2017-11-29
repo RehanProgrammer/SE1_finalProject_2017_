@@ -15,9 +15,7 @@
 <body>
 	<h4>your total is</h4>
 	<%out.print(SE1_shoppingSystem.order.total()); %>
-	<form action="payHere.jsp" method="post">
-        Scanner code<input type="number" name="scanner" min="1" required><br>
-		<input	type="submit" value="submit">
-        </form>
+	
+        <jsp:forward page="payHere.jsp"/>
 </body>
 </html>
