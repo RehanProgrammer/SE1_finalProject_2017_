@@ -29,7 +29,7 @@ public class customerInterface extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 out.write("testing");
 		if (pos.successfullOrder(scanner)) {
-			response.sendRedirect("scanner.jsp");
+			response.sendRedirect("scanner1.jsp");
 		}
 		/*String order = session.getAttribute("order").toString();
 		   int quantity = Integer.parseInt((String) session.getAttribute("quantity").toString());
