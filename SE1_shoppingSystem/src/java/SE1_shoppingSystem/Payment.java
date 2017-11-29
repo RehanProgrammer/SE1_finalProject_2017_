@@ -26,7 +26,7 @@ public abstract class Payment {
 class CardPayment extends Payment{
     private String cardNo,expDate,cvv;
     private String authNo;
-    bankInterface bank;
+    BankInterface bank;
     
     public CardPayment(){}
     public CardPayment(String cardNo, String expDate, String cvv, double amount){
@@ -38,7 +38,7 @@ class CardPayment extends Payment{
     
     @Override
     public boolean submitPayment(){
-        bank = new bankInterface();
+        bank = new BankInterface();
         
         if(bank.getAuthorization(cardNo, expDate, cvv, amount)){
             authNo = bank.getAuthorizationNo();
