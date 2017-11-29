@@ -36,7 +36,7 @@ class DebitCardPayment extends CardPayment{
     public boolean submitPayment(){
         bank= new BankInterface();
         
-        if(bank.getAuthorizationNo(cardNo, expDate,cvv,pin,amount)){
+        if(bank.getAuthorization(cardNo, expDate,cvv,pin,amount)){
             authNo = bank.getAuthorizationNo();
             return true;
         }
