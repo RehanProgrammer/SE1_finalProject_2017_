@@ -4,29 +4,33 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+//import java.util.ArrayList;
+
 public class order {
-    static ArrayList<String> Order = new ArrayList<String>();
-	static ArrayList<Double> Price = new ArrayList<Double>();
+	//static ArrayList<String> Order = new ArrayList<String>();
+	//static ArrayList<Double> Price = new ArrayList<Double>();
 	private static double price = 0.0;
 	private String order = null;
-	public boolean makeOrder(String order, int quantity) {
+	private static double total = 0;
+	public boolean makeOrder(String scannerCode) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection myConn = DriverManager.getConnection
 					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
 			PreparedStatement ps=myConn.prepareStatement(  
-					"select * from inventory where itemName='" + order+"'" );
+					"select * from inventory where ItemId='" + scannerCode+"'" );
 			ResultSet rs = ps.executeQuery();
 			//String Order = rs.getString("itemName");
 			if(rs.next()) {
 				if (rs.getString("ItemId")!=null) {
-					 price = rs.getDouble("price");
-					 price = quantity * price;
-					 //arraylist(order);
-					 //arraylist1(price);
-					 insertOrder(order, price);
-					 
+					price = rs.getDouble("price");
+					order = rs.getString("itemName");
+					total();
+					//price = quantity * price;
+					//arraylist(order);
+					//arraylist1(price);
+					insertOrder(order, price,scannerCode);
+					updateQuantity(scannerCode);
 					return true;
 				}
 				else {
@@ -42,43 +46,47 @@ public class order {
 		}
 		return false;
 	}
-	
+
 	public String getOrder() {
 		return order;
 	}
 	public static double getprice() {
 		return price;
 	}
-	public void insertOrder(String order, double price) {
+	public void insertOrder(String order, double price, String scannerCode) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection myConn = DriverManager.getConnection
 					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
-			String sql = "Insert into storeOrders(itemName,itemPrice) VALUES (?,?)";
+			String sql = "Insert into Cart(itemName,itemPrice,itemId) VALUES (?,?,?)";
 			PreparedStatement ps ;
 			ps = myConn.prepareStatement(sql);
 			ps.setString(1, order);
 			ps.setDouble(2, price);
+			ps.setString(3, scannerCode);
 			ps.executeUpdate();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public static void arraylist (String order) {
-		Order.add(order);
-		
+	public static double total () {
+		total +=price;
+		return total;
 	}
-	public static void arraylist1 (double price ) {
-		Price.add(price);
-		
-	}
-	public static String[] print () {
-		String prinT[] = null ;
-		for (int i=0; i<Order.size();i++) {
-			prinT[i] = Order.get(i) + " " + Price.get(i);
+	public void updateQuantity(String scannerCode) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection myConn = DriverManager.getConnection
+					("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","12345");
+			String update = "update inventory set quantity = quantity-1 where ItemId =?";
+			PreparedStatement ps;
+			 ps = myConn.prepareStatement(update);
+			 ps.setString(1, scannerCode);
+			 ps.executeUpdate();
 		}
-		return prinT;
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
 }

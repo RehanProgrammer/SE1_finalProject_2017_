@@ -1,9 +1,3 @@
-<%-- 
-    Document   : payHere
-    Created on : Nov 26, 2017, 10:44:45 PM
-    Author     : 123re
---%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,5 +18,11 @@
 	ps.executeUpdate();
 	%>
 	<h4>Choose payment options</h4>
+	<form action="CashPayment" method="post">
+       <input	type="submit" value="submit">
+        </form>
+        <form action="CardPayment" method="post">
+       <input	type="submit" value="submit">
+        </form>
 </body>
 </html>
