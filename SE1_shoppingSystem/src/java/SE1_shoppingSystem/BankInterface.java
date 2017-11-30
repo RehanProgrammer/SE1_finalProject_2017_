@@ -12,7 +12,12 @@ public class BankInterface {
         
         return true;
     }
-    
+    public boolean getAuthorization(String cardNo, String expDate, String cvv,String pin, double amount){
+        int authNo = rand.nextInt(100000000) +1;
+        authorizationNo = Integer.toString(authNo);
+        
+        return true;
+    }
     public String getAuthorizationNo(){
         return authorizationNo;
     }

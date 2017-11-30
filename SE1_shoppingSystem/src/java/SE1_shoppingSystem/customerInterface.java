@@ -1,11 +1,5 @@
 package SE1_shoppingSystem;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-//package hw4;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,21 +8,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
+import java.io.PrintWriter;
 
 
-@WebServlet(urlPatterns = {"/customerInterface"})
+@SuppressWarnings("unused")
+@WebServlet("/customerInterface")
 public class customerInterface extends HttpServlet {
-
+	private static final long serialVersionUID = 1L;
+       
     
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String order = session.getAttribute("order").toString();
-		int quantity = Integer.parseInt((String) session.getAttribute("quantity").toString());
+    public customerInterface() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//HttpSession session = request.getSession();
+		String scanner = request.getParameter("scanner");
 		purchaseOrder_Manager pos = new purchaseOrder_Manager();
-		if(pos.successfullOrder(order, quantity)) {
+                PrintWriter out = response.getWriter();
+                out.write("testing");
+		if (pos.successfullOrder(scanner)) {
+			response.sendRedirect("scanner1.jsp");
+		}
+		/*String order = session.getAttribute("order").toString();
+		   int quantity = Integer.parseInt((String) session.getAttribute("quantity").toString());
+		    purchaseOrder_Manager pos = new purchaseOrder_Manager();
+		    if(pos.successfullOrder(order, quantity)) {
+			session.invalidate();
 			response.sendRedirect("moreOrder.jsp");
 		}
-		
+		else {
+			String message = order + " is Not available in database";
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
+		}*/
 				
 	}
+		
+
 }
