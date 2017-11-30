@@ -27,7 +27,7 @@ class DebitCardPayment extends CardPayment{
     
     private String pin;
     
-    DebitCardPayment(String cardNo, String expDate, String cvv, double amount, String pin){
+    DebitCardPayment(String cardNo, String expDate, String cvv, String pin, double amount){
         super(cardNo,expDate,cvv,amount);
         this.pin = pin;
     }

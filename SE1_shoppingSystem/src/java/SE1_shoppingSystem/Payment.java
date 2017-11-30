@@ -23,38 +23,6 @@ public abstract class Payment {
     
     
 }
-class CardPayment extends Payment{
-    private String cardNo,expDate,cvv;
-    private String authNo;
-    BankInterface bank;
-    
-    public CardPayment(){}
-    public CardPayment(String cardNo, String expDate, String cvv, double amount){
-        super(amount);
-        this.cardNo = cardNo;
-        this.expDate = expDate;
-        this.cvv = cvv;
-    }
-    
-    @Override
-    public boolean submitPayment(){
-        bank = new BankInterface();
-        
-        if(bank.getAuthorization(cardNo, expDate, cvv, amount)){
-            authNo = bank.getAuthorizationNo();
-            return true;
-        } 
-      
-    
-        return false;
-    }
-    
-    public String getAuthorizationNo(){
-        return authNo;
-    }
-    
-    
-}
 class CashPayment extends Payment{
     
     private enum coinDenominations{
@@ -112,7 +80,7 @@ class CashPayment extends Payment{
     public double getChange(){
         return change;
     }
-   public int[] getChangeCoins(){
+   public int[] getChangeArray(){
        return changeCoins;
    }
 

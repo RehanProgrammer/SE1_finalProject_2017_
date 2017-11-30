@@ -17,12 +17,25 @@
 	PreparedStatement ps=myConn.prepareStatement(delete);
 	ps.executeUpdate();
 	%>
+        
 	<h4>Choose payment options</h4>
 	<form action="CashPayment.jsp" method="post">
-       Cash <input	type="submit" value="submit">
+       <input type="submit" value="Cash">
         </form>
-        <form action="CardPayment.jsp" method="post">
-       Card <input	type="submit" value="submit">
+        <form >
+       <input type="submit" name="cardPayment" value="Card">
         </form>
+        
+       
+        <%
+            
+            if(request.getParameter("cardPayment")!=null){
+                %>
+               
+                <jsp:include page="CardPayment.jsp" flush="true"/>
+              
+                    <%
+                        }
+                        %>
 </body>
 </html>

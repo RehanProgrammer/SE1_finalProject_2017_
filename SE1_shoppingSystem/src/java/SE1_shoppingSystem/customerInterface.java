@@ -15,8 +15,8 @@ import java.io.PrintWriter;
 @WebServlet("/customerInterface")
 public class customerInterface extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
+       purchaseOrder_Manager pos = new purchaseOrder_Manager();
+        
     public customerInterface() {
         super();
         // TODO Auto-generated constructor stub
@@ -24,27 +24,68 @@ public class customerInterface extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HttpSession session = request.getSession();
-		String scanner = request.getParameter("scanner");
-		purchaseOrder_Manager pos = new purchaseOrder_Manager();
                 PrintWriter out = response.getWriter();
+                
+                if(request.getParameter("action1")!=null){
+                    
+		String scanner = request.getParameter("scanner");
                 out.write("testing");
 		if (pos.successfullOrder(scanner)) {
 			response.sendRedirect("scanner1.jsp");
 		}
-		/*String order = session.getAttribute("order").toString();
-		   int quantity = Integer.parseInt((String) session.getAttribute("quantity").toString());
-		    purchaseOrder_Manager pos = new purchaseOrder_Manager();
-		    if(pos.successfullOrder(order, quantity)) {
-			session.invalidate();
-			response.sendRedirect("moreOrder.jsp");
-		}
-		else {
-			String message = order + " is Not available in database";
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-		}*/
-				
+    
+                }//end action1
+                
+                
+                else if(request.getParameter("CashPayment")!=null){
+                    String cashGiven;
+                    double cash = 0.0;
+                    double cash1 = 0.0;
+                     double total=0.0;
+                    out.write("action2");
+                    cashGiven = request.getParameter("cashGiven");
+                    cash = Double.parseDouble(cashGiven);
+                    
+                    total = pos.getTotal();
+                    pos.orderWithCash(cash,total);
+                    
+                }
+                
+                else if(request.getParameter("cardTypeDebit")!=null){
+                    
+                    
+                    String cardNo = request.getParameter("cardNo");
+                    String expDate = request.getParameter("expDate");
+                    String cvv = request.getParameter("cvv");
+                    String pin = request.getParameter("pin");
+                    
+                    if(pos.orderWithCard(cardNo, expDate, cvv, pin)){
+                        out.write("Debit Card accepted.");
+                    }
+                    
+                    
+                }
+                 else if(request.getParameter("cardTypeCredit")!=null){
+                    
+                    
+                    String cardNo = request.getParameter("cardNo");
+                    String expDate = request.getParameter("expDate");
+                    String cvv = request.getParameter("cvv");
+                    
+                    
+                    if(pos.orderWithCard(cardNo, expDate, cvv)){
+                        out.write("Credit Card accepted.");
+                    }
+                    
+                  
+                }
+                
+                
+			
+                
 	}
+        
+        
 		
 
 }

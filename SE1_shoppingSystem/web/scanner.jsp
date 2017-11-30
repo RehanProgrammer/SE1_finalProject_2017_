@@ -9,7 +9,7 @@
 <body>
  <form action="customerInterface" method="post">
 		Scanner code<input type="number" name="scanner" min="1" required><br>
-		<input type="submit" value="submit">
+		<input type="submit" name="action1" value="submit">
 	</form>
 	<a href="total.jsp"> total</a>
 

@@ -13,5 +13,30 @@
     </head>
     <body>
         <h1>Card Payment. Credit or Debit?</h1>
+        
+        <form method="post">
+            
+            <input type ="submit" name="cardTypeDebit" value="Debit"><br/>
+            <input type ="submit" name="cardTypeCredit" value="Credit" ><br/>
+            
+        </form>
+        
+        <%
+            
+            if(request.getParameter("cardTypeDebit")!=null){
+                %>
+               
+                <jsp:include page="DebitCardPayment.jsp" flush="true"/>
+              
+                    <%
+                        }else if(request.getParameter("cardTypeCredit")!=null){
+
+                        %>
+                        <jsp:include page="CreditCardPayment.jsp" flush="true"/>
+                        <%
+                            }
+                            %>
+        
+       
     </body>
 </html>
