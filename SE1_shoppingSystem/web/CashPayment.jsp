@@ -14,12 +14,15 @@
     <body>
         <h1>Cash Payment. Enter cash to pay with.</h1>
         Total: 
-        <%out.print(SE1_shoppingSystem.order.total()); %>
+        <%out.print(SE1_shoppingSystem.order.getTotal()); %>
         
         <form action="customerInterface" method="post">
             Enter Cash to pay: <input type ="text" name="cashGiven"><br/>
-            <input type="submit" name="CashPayment" value="submit"><br/>
+            <input type="submit" name="CashPayment" value="submit">
             
+        </form>
+        <form action="payHere.jsp" >
+            <input type="submit" value="Change Payment Method">
         </form>
     </body>
 </html>

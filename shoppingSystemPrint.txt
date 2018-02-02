@@ -1,0 +1,20 @@
+Customer Receipt.
+---------------------
+Amount charged: 1.95
+Change: 1.2700000000000002
+Store Receipt.
+---------------------
+Amount charged: 1.95
+Change: 1.2700000000000002
+***************************************
+
+Customer Receipt.
+---------------------
+Amount charged: 1.95
+Change: 1.55
+Store Receipt.
+---------------------
+Amount charged: 1.95
+Change: 1.55
+***************************************
+

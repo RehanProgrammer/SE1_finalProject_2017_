@@ -7,16 +7,25 @@
 <title>Scanner page</title>
 </head>
 <body>
- <form action="customerInterface" method="post">
-		Scanner code<input type="number" name="scanner" min="1" required><br>
-		<input type="submit" name="action1" value="submit">
+        <form action="customerInterface" method="post">
+		Scanner code<input type="number" name="scannercode" min="1" required><br>
+		<input type="submit" name="scanner" value="submit">
 	</form>
-	<a href="total.jsp"> total</a>
-
+    
+	
+        <form action="payHere.jsp" >
+            <input type="submit" value="Total">
+        </form>
+        
+        <form action="customerInterface" method="post">
+            <input type="submit" name="cancel" value="Cancel">
+        </form>
+    
 	<h4>
 		Your items<br>
 		<%@ page import="java.sql.*"%>
 		<% 
+                    
 	try{
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection myConn = DriverManager.getConnection

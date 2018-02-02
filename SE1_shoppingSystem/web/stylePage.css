@@ -1,0 +1,47 @@
+body{
+    background: antiquewhite;
+    font-size: 100%;
+    font-family: "Courier",Times,serif;
+}
+h1.header{
+    text-align: center;
+    color: black;
+}
+h1{
+    
+    font-size: 1.875em; /*1em = 16px */
+    font-variant: small-caps;
+}
+a{
+    
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+}
+a:hover{
+    color: red;
+}
+.start{
+    text-align: center;
+}
+div.menu{
+    
+    position: absolute;
+    width:500px;
+    height: 200px;
+    z-index: 15;
+    top:25%;
+    left: 50%;
+    margin: -100px 0 0 -250px;
+    padding: .5em;
+    background: #b2cecf;
+    border-style: solid;
+    border-width: thick;
+    border-color: #f44336; /* #f44336 #b2cecf */
+    border-radius: 5px;
+    
+}

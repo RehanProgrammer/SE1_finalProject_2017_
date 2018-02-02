@@ -8,10 +8,18 @@
 </head>
 <body>
 <form action="customerInterface" method="post">
-        Scanner code<input type="number" name="scanner" min="1" required><br>
-		<input	type="submit" name="action1" value="submit">
+        Scanner code<input type="number" name="scannercode" min="1" required><br>
+		<input	type="submit" name="scanner" value="submit">
         </form>
-	<a href = "total.jsp"> total</a>
+	
+        <form action="payHere.jsp" >
+            <input type="submit" value="Total">
+        </form>
+        
+        <form action="customerInterface" method="post">
+            <input type="submit" name="cancel" value="Cancel">
+        </form>
+        
 	<h4>Your items<br> 
 	<%@ page import = "java.sql.*" %>
 	<% 
@@ -20,7 +28,7 @@
 	Connection myConn = DriverManager.getConnection
 			("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","DdaavviidMYSQL1d");
 	PreparedStatement ps=myConn.prepareStatement(  
-			"select * from Cart");//check if the cart table is not null
+			"select * from cart");//check if the cart table is not null
 	ResultSet rs = ps.executeQuery();
 	ResultSetMetaData rsmd = rs.getMetaData();
 	int columnsNumber = rsmd.getColumnCount();
@@ -31,15 +39,19 @@
 	        
 	    }
 	    out.println("<br>");
+	    
+	    
 	}
-	
+	out.print(SE1_shoppingSystem.order.getTotal());
 }
-
+	
 catch(Exception e){
 	e.printStackTrace();
 }
 	
-	%>  </h4> 
+	%>  </h4>
+
+
 	
 	
 </body>

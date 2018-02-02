@@ -1,6 +1,9 @@
 
 package SE1_shoppingSystem;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 
 public abstract class Payment {
  
@@ -13,6 +16,7 @@ public abstract class Payment {
     }
     
     abstract boolean submitPayment();
+    abstract String getReceipt();
     
     void setAmount(double amount){
         this.amount = amount;
@@ -23,6 +27,8 @@ public abstract class Payment {
     
     
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 class CashPayment extends Payment{
     
     private enum coinDenominations{
@@ -41,6 +47,7 @@ class CashPayment extends Payment{
     private double cashGiven;
     private int[] changeCoins = new int[5]; //number of each coin in change will be stored in change array
     private double change; //change this to = cashgiven - amount
+    private double changeTemp;
     
     CashPayment(){}
     CashPayment(double cashGiven,double amount){
@@ -52,8 +59,11 @@ class CashPayment extends Payment{
     public boolean submitPayment(){
         final double[] coinValues = new double[] {coinDenominations.DOLLAR.getValue(),coinDenominations.QUARTER.getValue(),
             coinDenominations.DIME.getValue(),coinDenominations.NICKLE.getValue(),coinDenominations.PENNY.getValue()};
-        System.out.println("****");
+        
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        formatter.format(changeTemp);
         change = cashGiven - amount;
+        changeTemp = change;
         int i;
         if(cashGiven>=amount){
             //coinDenominations.DIME.getValue();
@@ -74,6 +84,18 @@ class CashPayment extends Payment{
         return true;
     }//end function submitPayment
     
+    @Override
+    public String getReceipt(){
+        return "Customer Receipt.,"
+                +"---------------------,"+
+                "Amount charged: "+amount+","+
+                "Change: "+changeTemp+","+
+                "Store Receipt.,"+
+                "---------------------,"+
+                "Amount charged: "+amount+","+
+                "Change: "+changeTemp+","+
+                "***************************************";
+    }
     public double getCashGiven(){
         return cashGiven;
     }

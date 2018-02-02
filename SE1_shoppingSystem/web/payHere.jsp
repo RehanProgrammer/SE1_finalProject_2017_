@@ -7,23 +7,21 @@
 <title>Payment options</title>
 </head>
 <body>
-	<h3>pay here</h3>
-	<%@ page import = "java.sql.*" %>
-	<%
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection myConn = DriverManager.getConnection
-			("jdbc:mysql://localhost:3306/finalprojectdatabase?useSSL=false","root","DdaavviidMYSQL1d");
-	String delete = "DELETE FROM Cart";
-	PreparedStatement ps=myConn.prepareStatement(delete);
-	ps.executeUpdate();
-	%>
+    <%
         
+        //SE1_shoppingSystem.order.total();
+        
+        out.print("Your total: "+SE1_shoppingSystem.order.getTotal());
+        %>
 	<h4>Choose payment options</h4>
 	<form action="CashPayment.jsp" method="post">
        <input type="submit" value="Cash">
         </form>
         <form >
        <input type="submit" name="cardPayment" value="Card">
+        </form>
+        <form action="customerInterface" method="post">
+            <input type="submit" name="cancel" value="Cancel">
         </form>
         
        

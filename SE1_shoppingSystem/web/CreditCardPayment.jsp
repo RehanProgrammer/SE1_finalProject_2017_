@@ -19,5 +19,8 @@
             Security Number <input type="text" name="cvv"><br/>
             <input type="submit" name="cardTypeCredit" value="submit"><br/>
         </form>
+        <form action="payHere.jsp" >
+            <input type="submit" value="Change Payment Method">
+        </form>
     </body>
 </html>

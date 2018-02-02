@@ -13,12 +13,20 @@
     </head>
     <body>
         <h1>Debit Payment</h1>
-        <form action = "customerInterface" method="post">
-            Card Number <input type="text" name="cardNo"><br/>
-            Expiration Date <input type="text" name="expDate"><br/>
-            Security Number <input type="text" name="cvv"><br/>
-            Pin <input type="text" name="pin"><br/>
+        
+             
+        <form action = "customerInterface" method="post" >
+           Card Number <input type="text" name="cardNo" required><br/>
+            Expiration Date <input type="text" name="expDate" required><br/>
+            Security Number <input type="text" name="cvv" required><br/>
+            Pin <input type="text" name="pin" required><br/>
             <input type="submit" name="cardTypeDebit" value="submit"><br/>
         </form>
+        
+        <form action="payHere.jsp" >
+            <input type="submit" value="Change Payment Method">
+        </form>
+            
+        
     </body>
 </html>

@@ -4,20 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="stylePage.css">
 <title>Start page</title>
 </head>
 <body>
- <h1>Auto scout system</h1>
+    <div class="menu">
+ <h1 class="header">Auto scout system</h1>
   
-  <a href="scanner.jsp">start check out</a>
- 
+ <div class="start">
+     
+     <form action="customerInterface" method="post">
+         <input type="submit" name="start" value="Start Check Out">
+     </form>
+  
+ </div>
+    </div>
+    
 </body>
 </html>
-<%/*
-<form action="scanner.jsp" method="post">
-order: <input type="text" name="order" required><br>
-quantity<input type="number" name="quantity" min="1" required><br>
-<input	type="submit" value="submit">
-</form>
-*/
-%>

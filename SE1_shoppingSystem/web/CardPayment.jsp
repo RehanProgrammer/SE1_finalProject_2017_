@@ -20,7 +20,9 @@
             <input type ="submit" name="cardTypeCredit" value="Credit" ><br/>
             
         </form>
-        
+        <form action="payHere.jsp" >
+            <input type="submit" value="Change Payment Method">
+        </form>
         <%
             
             if(request.getParameter("cardTypeDebit")!=null){

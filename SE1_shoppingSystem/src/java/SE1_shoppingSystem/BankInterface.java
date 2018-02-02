@@ -3,7 +3,7 @@ package SE1_shoppingSystem;
 import java.util.Random;
 
 public class BankInterface {
-    String authorizationNo;
+    private String authorizationNo;
     Random rand = new Random();
    
     public boolean getAuthorization(String cardNo, String expDate, String cvv, double amount){
